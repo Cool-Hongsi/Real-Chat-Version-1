@@ -19,7 +19,11 @@ var conn = mysql.createConnection({
 
 conn.connect();
 
+app.get('/', (req, res) => {
+    res.send('HI');
+})
 
+/*
 app.get('/', (req, res) => {
     var sql = 'SELECT *FROM user';
     conn.query(sql, function(err, rows, fields){
@@ -31,6 +35,7 @@ app.get('/', (req, res) => {
         }
     })
 })
+*/
 
 app.listen(port, () => {
     console.log(`Express http server listening on ${port}`);
