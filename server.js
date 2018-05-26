@@ -9,7 +9,7 @@ var salt = 'fEWFGEG#3543fdfweq#$R@#';
 var session = require('express-session');
 var mysql = require('mysql');
 
-/*
+
 var conn = mysql.createConnection({
     host : 'localhost', // 'us-cdbr-iron-east-04.cleardb.net', // 'localhost',
     user : 'root', // 'b6689869dac7b0', // 'root',
@@ -20,7 +20,7 @@ var conn = mysql.createConnection({
 // DATABASE_URL= mysql://b6689869dac7b0:4b440f39@us-cdbr-iron-east-04.cleardb.net/heroku_e24dec95234d587?reconnect=true
 
 conn.connect();
-*/
+
 
 app.get('/', (req, res) => {
     res.send('HI !!');
