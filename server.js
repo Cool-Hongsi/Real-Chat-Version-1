@@ -131,7 +131,7 @@ io.on('connection', function(socket){
         updateNicknames();
       }
     })
-
+    // aaaaaa
     function updateNicknames(){
         io.emit('usernames', nicknames);
     }
