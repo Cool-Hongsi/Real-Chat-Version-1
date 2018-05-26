@@ -61,12 +61,11 @@ app.post('/login/success', (req, res) => {
         }
     })
 });
-//a
+
 app.get('/welcome', (req, res) => {
     if(req.session.nickname){
        // res.render('loginsuccess', {nickname:req.session.nickname});
-       res.render('loginsuccess');
-       document.querySelector('.abc').innerHTML(req.session.nickname);
+       res.render('loginsuccess', {nickname:req.session.nickname});
     }
     else{
         var output = `
