@@ -15,10 +15,10 @@ var ejs = require('ejs');
 
 // clearmysql을 내 heroku app에 설정하고, 해당 정보를 하기와 같이 기재. 이후, navigator를 이용해서 테이블 수정
 var conn = mysql.createConnection({
-    host : 'localhost', // 'us-cdbr-iron-east-04.cleardb.net',
-    user : 'root', // 'b0dd242e3864eb',
-    password : '111111', // '811489ba',
-    database : 'signup' // 'heroku_e32bdbd71a00947'
+    host : 'us-cdbr-iron-east-04.cleardb.net', // 'localhost',
+    user : 'b0dd242e3864eb', // 'root', 
+    password : '811489ba', // '111111', 
+    database : 'heroku_e32bdbd71a00947' // 'signup'
 });
 
 conn.connect();
