@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
             throw err;
         }
         else{
-            res.send(1);
+            res.send(rows[0].AGE);
         }
     })
 })
