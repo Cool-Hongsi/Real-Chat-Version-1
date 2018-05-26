@@ -12,7 +12,6 @@ var fs = require('fs');
 var ejs = require('ejs');
 // var modulefile = require('./module.js');
 
-
 // clearmysql을 내 heroku app에 설정하고, 해당 정보를 하기와 같이 기재. 이후, navigator를 이용해서 테이블 수정
 var conn = mysql.createConnection({
     host : 'us-cdbr-iron-east-04.cleardb.net',
@@ -22,7 +21,6 @@ var conn = mysql.createConnection({
 });
 
 conn.connect();
-
 
 app.use(express.static('./sub')); // In order to use CSS file
 app.use(bodyParser.urlencoded({extended: false}));
@@ -99,7 +97,7 @@ app.post('/signup/success', (req, res) => {
             res.status(500).send('Error Occured in /signup/success');
         }
         else{
-            res.render('signupsuccess');
+            res.render('signupsuccess', {a:nickname});
         }
     })
 })
