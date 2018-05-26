@@ -102,7 +102,7 @@ app.post('/signup/success', (req, res) => {
     })
 })
 
-app.get('/login/logout', function(req,res){
+app.get('/login/logout', (req, res) => {
     delete req.session.nickname;
     
     var output = `
@@ -112,6 +112,42 @@ app.get('/login/logout', function(req,res){
     
     res.send(output);
 })
+
+app.get('/startchat', (req, res) => { 
+    res.sendFile(__dirname + './sub/startchat.html');
+});
+
+var nicknames = [];
+
+io.on('connection', function(socket){
+    socket.on('new user', function(data, callback){
+      if(nicknames.indexOf(data) != -1){ // nicknames 배열에 data 값이 있다면,,
+        callback(false);
+      }
+      else{ // nicknames 배열에 data 값이 없다면,,
+        callback(true);
+        socket.nickname = data;
+        nicknames.push(socket.nickname);
+        updateNicknames();
+      }
+    })
+
+    function updateNicknames(){
+        io.emit('usernames', nicknames);
+    }
+
+    socket.on('send message', function(data){
+      io.emit('new message', {msg:data, nick:socket.nickname});
+    })
+    
+    socket.on('disconnect', function(data){
+      if(!socket.nickname) return;
+      nicknames.splice(nicknames.indexOf(socket.nickname), 1); // nickname 배열에서 유저가 나갔을 때, 해당 nickname 1개를 빼라.
+      updateNicknames();
+    })
+});
+
+// conn.end();
 
 app.listen(port, () => {
     console.log(`Express http server listening on ${port}`);
