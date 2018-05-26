@@ -66,7 +66,7 @@
                     for(var i=0; i<data.length; i++){
                         output_username += data[i] + '<br>'
                     }
-                $('#users').html(output_username + 'hello'); // append로 하면, username이 쌓인다.
+                $('#users').innerHTML(output_username + 'hello'); // append로 하면, username이 쌓인다.
             });
             
             $('#send-message').on('submit', function(e){
