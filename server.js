@@ -34,9 +34,7 @@ app.use(session({
 
 app.get('/', (req, res) => {
     modulefile.login.then(function(resolvedata){
-        fs.sendFile(resolvedata);
-    }).catch(function(rejecterr){
-        res.status(500).send(rejecterr);
+        res.render(resolvedata);
     })
 })
 
