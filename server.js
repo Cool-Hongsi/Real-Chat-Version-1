@@ -149,6 +149,6 @@ io.on('connection', function(socket){
 
 // conn.end();
 
-server.listen(port, () => { // never app.listen
+server.listen(port, () => { // never
     console.log(`Express http server listening on ${port}`);
 });
