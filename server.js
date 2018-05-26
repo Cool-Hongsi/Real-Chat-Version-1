@@ -9,7 +9,9 @@ var salt = 'fEWFGEG#3543fdfweq#$R@#';
 var session = require('express-session');
 var mysql = require('mysql');
 var fs = require('fs');
-var modulefile = require('./module.js');
+var ejs = require('ejs');
+// var modulefile = require('./module.js');
+
 
 // clearmysql을 내 heroku app에 설정하고, 해당 정보를 하기와 같이 기재. 이후, navigator를 이용해서 테이블 수정
 var conn = mysql.createConnection({
@@ -29,7 +31,7 @@ app.use(session({
     saveUninitialized : true
 }));
 
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 app.set('views', './sub');
 
 app.get('/', (req, res) => {
