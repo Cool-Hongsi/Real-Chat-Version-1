@@ -48,7 +48,7 @@ app.post('/login/success', (req, res) => {
         if(err){
             throw err;
             res.status(500).send('Error Occured in /login/success');
-        }
+        } // a
         else{
             for(var i=0; i<rows.length; i++){
                 if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
