@@ -48,7 +48,7 @@
           $(function(){
             var socket = io();
             $('#setNick').on('submit', function(e){
-                e.preventDefault(); // necessary
+                // e.preventDefault(); // necessary
                 socket.emit('new user', $('#nickname').val(), function(data){
                     if(data){ // 기존에 동일한 아이디가 없다면,
                         $('#nickWrap').hide(); // nickWrap 페이지를 없애고,
@@ -70,7 +70,7 @@
             });
             
             $('#send-message').on('submit', function(e){
-                e.preventDefault(); // necessary
+                // e.preventDefault(); // necessary
                 socket.emit('send message', $('#m').val());
                 $('#m').val('');
             });
