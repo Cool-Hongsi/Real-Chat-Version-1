@@ -9,6 +9,7 @@ var salt = 'fEWFGEG#3543fdfweq#$R@#';
 var session = require('express-session');
 var mysql = require('mysql');
 var fs = require('fs');
+var modulefile = require('./module.js');
 
 // clearmysql을 내 heroku app에 설정하고, 해당 정보를 하기와 같이 기재. 이후, navigator를 이용해서 테이블 수정
 var conn = mysql.createConnection({
@@ -19,7 +20,6 @@ var conn = mysql.createConnection({
 });
 
 conn.connect();
-
 
 app.use(express.static('./sub')); // In order to use CSS file
 app.use(bodyParser.urlencoded({extended: false}));
@@ -32,16 +32,11 @@ app.use(session({
 // app.set('view engine', 'jade');
 // app.set('views', './sub');
 
-
 app.get('/', (req, res) => {
-    var sql = 'SELECT *FROM user';
-    conn.query(sql, function(err, rows, fields){
-        if(err){
-            throw err;
-        }
-        else{
-            res.send(rows[0].NAME);
-        }
+    modulefile.login.then(function(resolvedata){
+        res.send(resolvedata);
+    }).catch(function(rejecterr){
+        res.status(500).send(rejecterr);
     })
 })
 
