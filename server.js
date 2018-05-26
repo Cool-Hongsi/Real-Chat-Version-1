@@ -132,8 +132,6 @@ io.on('connection', function(socket){
       }
     })
 
-    // abc
-
     function updateNicknames(){
         io.emit('usernames', nicknames);
     }
@@ -151,6 +149,6 @@ io.on('connection', function(socket){
 
 // conn.end();
 
-server.listen(port, () => { // never
+server.listen(port, () => { // never app.listen
     console.log(`Express http server listening on ${port}`);
 });
