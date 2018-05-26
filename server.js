@@ -33,7 +33,7 @@ app.use(session({
 
 app.set('view engine', 'html');
 app.set('views', './sub');
-
+app.engine('html', ejs.renderFile);
 
 app.get('/', (req, res) => {
     res.render('login');
