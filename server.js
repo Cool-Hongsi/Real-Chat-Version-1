@@ -110,7 +110,6 @@ app.get('/login/logout', (req, res) => {
     <h1>Logout Successfully !</h1><br>
     <a href="/"><input type="button" value="LOGIN"></a>
     `;
-    // aa
     res.send(output);
 })
 
