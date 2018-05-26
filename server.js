@@ -33,12 +33,11 @@ app.use(session({
 // app.set('views', './sub');
 
 app.get('/', (req, res) => {
-    res.send('hi');
-    // modulefile.login.then(function(resolvedata){
-    //     res.send(resolvedata);
-    // }).catch(function(rejecterr){
-    //     res.status(500).send(rejecterr);
-    // })
+    modulefile.login.then(function(resolvedata){
+        fs.sendFile(resolvedata);
+    }).catch(function(rejecterr){
+        res.status(500).send(rejecterr);
+    })
 })
 
 
