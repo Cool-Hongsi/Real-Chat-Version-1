@@ -38,6 +38,8 @@ app.get('/', (req, res) => {
     res.render('login');
 })
 
+// 필수 : DB 안에 ID가 같은게 있거나, PWD가 같은게 있으면 에러 발생
+
 app.post('/login/success', (req, res) => {
     var id = req.body.id;
     var pwd = req.body.pwd;
@@ -64,7 +66,6 @@ app.post('/login/success', (req, res) => {
 
 app.get('/welcome', (req, res) => {
     if(req.session.nickname){
-       // res.render('loginsuccess', {nickname:req.session.nickname});
        res.render('loginsuccess', {nickname:req.session.nickname});
     }
     else{
@@ -80,6 +81,8 @@ app.get('/welcome', (req, res) => {
 app.get('/signup', (req, res) => {
     res.render('signup');
 })
+
+// 필수 : DB 안에 ID가 같은게 있거나, PWD가 같은게 있으면 에러 발생
 
 app.post('/signup/success', (req, res) => {
     var name = req.body.name;
@@ -111,7 +114,7 @@ app.get('/login/logout', (req, res) => {
     `;
     res.send(output);
 })
-//aa
+
 app.get('/startchat', (req, res) => { 
     res.sendFile(__dirname + '/sub/startchat.html'); // ./sub 하면 안됨
 });
@@ -151,3 +154,7 @@ io.on('connection', function(socket){
 server.listen(port, () => { // never app.listen
     console.log(`Express http server listening on ${port}`);
 });
+
+// CHANGE THE APP IN HEROKU
+// PS C:\Users\hongs\dev\js\server_side_javascript\RealChat> git remote rm heroku
+// PS C:\Users\hongs\dev\js\server_side_javascript\RealChat> heroku git:remote -a fast-spire-12846 (new app name)
