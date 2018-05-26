@@ -29,13 +29,11 @@ app.use(session({
     saveUninitialized : true
 }));
 
-// app.set('view engine', 'jade');
-// app.set('views', './sub');
+app.set('view engine', 'html');
+app.set('views', './sub');
 
 app.get('/', (req, res) => {
-    modulefile.login.then(function(resolvedata){
-        res.render(resolvedata);
-    })
+    res.render('login');
 })
 
 
