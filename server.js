@@ -118,7 +118,6 @@ app.get('/startchat', (req, res) => {
 });
 
 var nicknames = [];
-var a;
 
 io.on('connection', function(socket){
     socket.on('new user', function(data, callback){
@@ -127,10 +126,8 @@ io.on('connection', function(socket){
       }
       else{ // nicknames 배열에 data 값이 없다면,,
         callback(true);
-        a = data;
-        // socket.nickname = data;
-        // nicknames.push(socket.nickname);
-        nicknames.push(a);
+        socket.nickname = data;
+        nicknames.push(socket.nickname);
         updateNicknames();
       }
     })
