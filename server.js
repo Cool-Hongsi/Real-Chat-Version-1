@@ -118,7 +118,7 @@ app.get('/startchat', (req, res) => {
 });
 
 var nicknames = [];
-// aaaaaa
+// aaaaaaa
 io.on('connection', function(socket){
     socket.on('new user', function(data, callback){
       if(nicknames.indexOf(data) != -1){ // nicknames 배열에 data 값이 있다면,,
