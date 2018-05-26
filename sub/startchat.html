@@ -3,10 +3,10 @@
         <meta charset="utf-8">
         <!--
         <link rel="stylesheet" href="bbb.css">
+        -->
         <link rel="stylesheet" href="fontello-fa271442/fontello-fa271442/css/fontello-embedded.css">
         <link rel="stylesheet" href="fontello-fa271442/fontello-fa271442/css/animation.css">
-        -->
-        <title>Chat</title>
+        <title>RealChat</title>
         <style>
             #chat{
                 height:500px;
@@ -39,7 +39,7 @@
                     <input type="submit"></input>
                 </form>
             </div>
-            <div id="users"></div>
+            <div id="users"><i class="icon-child animate-spin"></i></div>
         </div>
         
         <script src="/socket.io/socket.io.js"></script>
@@ -66,7 +66,7 @@
                     for(var i=0; i<data.length; i++){
                         output_username += data[i] + '<br>'
                     }
-                $('#users').innerHTML(output_username + 'hello'); // append로 하면, username이 쌓인다.
+                $('#users').html(output_username); // append로 하면, username이 쌓인다.
             });
             
             $('#send-message').on('submit', function(e){
