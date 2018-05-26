@@ -15,10 +15,10 @@ var ejs = require('ejs');
 
 // clearmysql을 내 heroku app에 설정하고, 해당 정보를 하기와 같이 기재. 이후, navigator를 이용해서 테이블 수정
 var conn = mysql.createConnection({
-    host : 'localhost', // 'us-cdbr-iron-east-04.cleardb.net', // 'localhost',
-    user : 'root', // 'b0dd242e3864eb', // 'root', 
-    password : '111111', // '811489ba', // '111111', 
-    database : 'signup' // 'heroku_e32bdbd71a00947' // 'signup'
+    host : 'us-cdbr-iron-east-04.cleardb.net',
+    user : 'bb7619d1a2d2a9',
+    password : '366b4056',
+    database : 'heroku_5c11217a00e23b5'
 });
 
 conn.connect();
@@ -44,7 +44,7 @@ app.post('/login/success', (req, res) => {
     var id = req.body.id;
     var pwd = req.body.pwd;
     
-    var sql = 'SELECT *FROM user';
+    var sql = 'SELECT *FROM USER';
     conn.query(sql, function(err, rows, fields){
         if(err){
             throw err;
