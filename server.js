@@ -51,7 +51,8 @@ app.post('/login/success', (req, res) => {
         }
         else{
             for(var i=0; i<rows.length; i++){
-                if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
+                // if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
+                if(id === rows[i].ID && pwd === rows[i].PWD){
                     req.session.nickname = rows[i].NICKNAME;
                     res.redirect('/welcome');
                 }
