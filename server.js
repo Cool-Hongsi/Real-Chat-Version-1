@@ -31,8 +31,9 @@ app.use(session({
     saveUninitialized : true
 }));
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 app.set('views', './sub');
+
 
 app.get('/', (req, res) => {
     res.render('login');
