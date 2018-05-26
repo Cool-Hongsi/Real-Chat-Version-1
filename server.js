@@ -51,8 +51,7 @@ app.post('/login/success', (req, res) => {
         }
         else{
             for(var i=0; i<rows.length; i++){
-                // if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
-                if(id === rows[i].ID && pwd === rows[i].PWD){
+                if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
                     req.session.nickname = rows[i].NICKNAME;
                     res.redirect('/welcome');
                 }
@@ -78,6 +77,41 @@ app.get('/welcome', (req, res) => {
     }
 })
 
+app.get('/signup', (req, res) => {
+    res.render('signup');
+})
+
+app.post('/signup/success', (req, res) => {
+    var name = req.body.name;
+    var age = req.body.age;
+    var id = req.body.id;
+    var pwd = req.body.pwd;
+    var nickname = req.body.nickname;
+    
+    var sql = 'INSERT INTO USER (NAME, AGE, ID, PWD, NICKNAME) VALUES (?, ?, ?, ?, ?)';
+    var params = [name, age, id, sha256(pwd+salt), nickname];
+    
+    conn.query(sql, params, function(err, rows, fields){
+        if(err){
+            throw err;
+            res.status(500).send('Error Occured in /signup/success');
+        }
+        else{
+            res.render('signupsuccess');
+        }
+    })
+})
+
+app.get('/login/logout', function(req,res){
+    delete req.session.nickname;
+    
+    var output = `
+    <h1>Logout Successfully !</h1><br>
+    <a href="/"><input type="button" value="LOGIN"></a>
+    `;
+    
+    res.send(output);
+})
 
 app.listen(port, () => {
     console.log(`Express http server listening on ${port}`);
