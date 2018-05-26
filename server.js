@@ -113,7 +113,7 @@ app.get('/login/logout', (req, res) => {
     `;
     res.send(output);
 })
-//a
+//aa
 app.get('/startchat', (req, res) => { 
     res.sendFile(__dirname + '/sub/startchat.html'); // ./sub 하면 안됨
 });
