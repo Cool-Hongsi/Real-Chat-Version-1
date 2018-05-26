@@ -11,13 +11,11 @@ var mysql = require('mysql');
 
 
 var conn = mysql.createConnection({
-    host : 'localhost', // 'us-cdbr-iron-east-04.cleardb.net', // 'localhost',
-    user : 'root', // 'b6689869dac7b0', // 'root',
-    password : '111111', // '4b440f39', // '111111',
-    database : 'signup' // 'heroku_e24dec95234d587' // 'signup'
+    host : 'us-cdbr-iron-east-04.cleardb.net', // 'localhost',
+    user : 'b0dd242e3864eb', // 'root',
+    password : '811489ba', // '111111',
+    database : 'heroku_e32bdbd71a00947' // 'signup'
 });
-
-// DATABASE_URL= mysql://b6689869dac7b0:4b440f39@us-cdbr-iron-east-04.cleardb.net/heroku_e24dec95234d587?reconnect=true
 
 conn.connect();
 
