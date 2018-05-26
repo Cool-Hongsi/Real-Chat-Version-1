@@ -115,10 +115,10 @@ app.get('/login/logout', (req, res) => {
 
 app.get('/startchat', (req, res) => { 
     res.sendFile(__dirname + '/sub/startchat.html'); // ./sub 하면 안됨
-    console.log('hi');
 });
 
 var nicknames = [];
+var a;
 
 io.on('connection', function(socket){
     socket.on('new user', function(data, callback){
@@ -127,8 +127,10 @@ io.on('connection', function(socket){
       }
       else{ // nicknames 배열에 data 값이 없다면,,
         callback(true);
-        socket.nickname = data;
-        nicknames.push(socket.nickname);
+        a = data;
+        // socket.nickname = data;
+        // nicknames.push(socket.nickname);
+        nicknames.push(a);
         updateNicknames();
       }
     })
