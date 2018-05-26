@@ -65,7 +65,7 @@ app.post('/login/success', (req, res) => {
 app.get('/welcome', (req, res) => {
     if(req.session.nickname){
        // res.render('loginsuccess', {nickname:req.session.nickname});
-       res.render('loginsuccess');
+       res.render('loginsuccess', {nickname:req.session.nickname});
     }
     else{
         var output = `
@@ -97,7 +97,7 @@ app.post('/signup/success', (req, res) => {
             res.status(500).send('Error Occured in /signup/success');
         }
         else{
-            res.render('signupsuccess', {a:nickname});
+            res.render('signupsuccess');
         }
     })
 })
