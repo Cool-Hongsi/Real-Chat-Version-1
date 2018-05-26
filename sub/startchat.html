@@ -39,7 +39,7 @@
                     <input type="submit"></input>
                 </form>
             </div>
-            <i class="icon-child animate-spin"></i><div id="users"></div>
+            <div id="users"></div>
         </div>
         
         <script src="/socket.io/socket.io.js"></script>
@@ -64,7 +64,7 @@
             socket.on('usernames', function(data){ // 채팅창 오른쪽에 USERNAME 표시
                 var output_username = '';
                     for(var i=0; i<data.length; i++){
-                        output_username += data[i] + '<br>'
+                        output_username += `<i class="icon-child animate-spin"></i>` + data[i] + '<br>'
                     }
                 $('#users').html(output_username); // append로 하면, username이 쌓인다.
             });
