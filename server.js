@@ -114,7 +114,7 @@ app.get('/login/logout', (req, res) => {
 })
 
 app.get('/startchat', (req, res) => { 
-    res.sendFile(__dirname + '/sub/startchat.html');
+    res.sendFile(__dirname + '/sub/startchat.html'); // ./sub 하면 안됨
 });
 
 var nicknames = [];
