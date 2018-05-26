@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
             throw err;
         }
         else{
-            res.send(rows[0].NAME);
+            res.send(rows[0].AGE);
         }
     })
 })
