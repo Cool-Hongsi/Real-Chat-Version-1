@@ -39,6 +39,44 @@ app.get('/', (req, res) => {
     res.render('login');
 })
 
+app.post('/login/success', (req, res) => {
+    var id = req.body.id;
+    var pwd = req.body.pwd;
+    
+    var sql = 'SELECT *FROM user';
+    conn.query(sql, function(err, rows, fields){
+        if(err){
+            throw err;
+            res.status(500).send('Error Occured in /login/success');
+        }
+        else{
+            for(var i=0; i<rows.length; i++){
+                if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
+                    req.session.nickname = rows[i].NICKNAME;
+                    res.redirect('/welcome');
+                }
+                else if(id === rows[i].ID || sha256(pwd+salt) === rows[i].PWD){
+                    res.redirect('/welcome');
+                }
+            }
+        }
+    })
+});
+
+app.get('/welcome', (req, res) => {
+    if(req.session.nickname){
+        res.render('loginsuccess', {nickname:req.session.nickname});
+    }
+    else{
+        var output = `
+        <h1>There is no matching USER</h1>
+        <br>
+        <a href="/"><input type="button" value="BACK"></a>
+        `;
+        res.send(output);
+    }
+})
+
 
 app.listen(port, () => {
     console.log(`Express http server listening on ${port}`);
