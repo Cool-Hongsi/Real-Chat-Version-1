@@ -59,7 +59,7 @@ app.post('/login/success', (req, res) => {
                 else if(id === rows[i].ID || sha256(pwd+salt) === rows[i].PWD){
                     res.redirect('/welcome');
                 }
-            }//a
+            }
         }
     })
 });
