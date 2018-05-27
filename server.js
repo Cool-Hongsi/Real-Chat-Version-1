@@ -86,13 +86,12 @@ app.get('/signup', (req, res) => {
 
 app.post('/signup/success', (req, res) => {
     var name = req.body.name;
-    var age = req.body.age;
     var id = req.body.id;
     var pwd = req.body.pwd;
     var nickname = req.body.nickname;
     
-    var sql = 'INSERT INTO USER (NAME, AGE, ID, PWD, NICKNAME) VALUES (?, ?, ?, ?, ?)';
-    var params = [name, age, id, sha256(pwd+salt), nickname];
+    var sql = 'INSERT INTO USER (NAME, ID, PWD, NICKNAME) VALUES (?, ?, ?, ?)';
+    var params = [name, id, sha256(pwd+salt), nickname];
     
     conn.query(sql, params, function(err, rows, fields){
         if(err){
