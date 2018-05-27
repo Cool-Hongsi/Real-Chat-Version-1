@@ -52,12 +52,20 @@ app.post('/login/success', (req, res) => {
         }
         else{
             for(var i=0; i<rows.length; i++){
-                if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
-                    req.session.nickname = rows[i].NICKNAME;
-                    res.redirect('/welcome');
-                }
-                else if(id === rows[i].ID || sha256(pwd+salt) === rows[i].PWD){
-                    res.redirect('/welcome');
+                // if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
+                //     req.session.nickname = rows[i].NICKNAME;
+                //     res.redirect('/welcome');
+                // }
+                // else if(id === rows[i].ID || sha256(pwd+salt) === rows[i].PWD){
+                //     res.redirect('/welcome');
+                if (id === rows[i].ID)
+                {
+                    for(var j=0; j<rows.length; j++){
+                        if(sha256(pwd+salt) === rows[j].PWD){
+                        req.session.nickname = rows[j].NICKNAME;
+                        res.redirect('/welcome');
+                    }
+                    }
                 }
             }
         }
