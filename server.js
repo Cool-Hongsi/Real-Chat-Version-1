@@ -81,7 +81,7 @@ app.get('/welcome', (req, res) => {
 app.get('/signup', (req, res) => {
     res.render('signup');
 })
-
+// a
 // 필수 : DB 안에 ID가 같은게 있거나, PWD가 같은게 있으면 에러 발생
 
 app.post('/signup/success', (req, res) => {
