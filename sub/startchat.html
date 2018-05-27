@@ -1,42 +1,34 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <!--
-        <link rel="stylesheet" href="bbb.css">
-        -->
         <link rel="stylesheet" href="fontello-fa271442/fontello-fa271442/css/fontello-embedded.css">
         <link rel="stylesheet" href="fontello-fa271442/fontello-fa271442/css/animation.css">
+        <link rel="stylesheet" href="design1.css">
         <title>RealChat</title>
         <style>
-            #chat{
-                height:500px;
-            }
             #contentWrap{
                 display:none;
             }
-            #chatWrap{
-                float:left;
-                border:1px #000 solid;
-            }
+
         </style>
     </head>
 
     <body>
-        <div id="nickWrap">
-            <p>Enter a username : </p>
+        <div id="nickWrap"> <!-- username 화면 -->
+            <p id="inputusername">Enter a username : </p>
             <p id="nickError"></p>
             <form id="setNick">
                 <input size="35" id="nickname"></input>
                 <input type="submit">
             </form>
         </div>
-
-        <div id="contentWrap">
+        
+        <div id="contentWrap"> <!-- chatting 화면 -->
             <div id="chatWrap">
-                <div id="chat"></div>
+                <textarea id="chat" readonly></textarea>
                 <form id="send-message">
-                    <input size="35" id="m"></input>
-                    <input type="submit"></input>
+                    <input width="500px" id="m"></input>
+                    <input type="submit" value="전송"></input>
                 </form>
             </div>
             <div id="users"></div>
@@ -76,7 +68,8 @@
             });
 
             socket.on('new message', function(data){
-                $('#chat').append('<b>' + data.nick + ' : </b>' + data.msg + '<br>');
+                $('#chat').append(data.nick + ' : ' + data.msg + '\n');
+                $('#chat').scrollTop($('#chat')[0].scrollHeight);
             })
           })
         </script>

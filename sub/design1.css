@@ -60,7 +60,6 @@ input[type=password] {
     font-size: 13px;
     padding: 13px;
     width: 100px;
-    
 }
 
 .signupbtn{
@@ -76,4 +75,30 @@ input[type=password] {
     border-radius: 30px;
     background-color: red;
     color:black;
+}
+
+textarea{
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+#chat{
+    width: 70%; 
+    height: 500px;
+    border-style: dashed;
+    background-color: #EAECEE;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+#contentWrap{
+    display:none;
+}
+
+#nickWrap{
+    float:left;
 }
