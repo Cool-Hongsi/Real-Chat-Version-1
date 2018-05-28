@@ -88,16 +88,13 @@ app.get('/welcome', (req, res) => {
                 </head>
                 <body>
                     <h1>H E L L O</h1>
-                    <span class="abc">${req.session.nickname}</span>
+                    <span class="loginnickname">${req.session.nickname}</span>
                     <br>
                     <h2>How was your today?</h2>
                     <br><br>
                     <a href="/startchat"><input type="button" value="START CHAT" class="signupbtn"></a>
                     <br><br>
                     <a href="/login/logout"><input type="button" value="LOGOUT" class="loginbtn"></a>
-                    <script src="../server.js"></script>
-                    <script>
-                    </script>
                 </body>
                 </html>
                 `;
