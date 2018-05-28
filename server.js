@@ -88,7 +88,7 @@ app.get('/welcome', (req, res) => {
                 </head>
                 <body>
                     <h1>H E L L O</h1>
-                    <span>${req.session.nickname}</span>
+                    <span class="loginnickname">${req.session.nickname}</span>
                     <br>
                     <h2>How was your today?</h2>
                     <br><br>
