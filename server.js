@@ -75,7 +75,33 @@ app.post('/login/success', (req, res) => {
 
 app.get('/welcome', (req, res) => {
     if(req.session.nickname){
-       res.render('loginsuccess', {nickname:req.session.nickname});
+       // res.render('loginsuccess', {nickname:req.session.nickname});
+       var output = `
+            <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>LOGIN SUCCESS</title>
+                    <link rel="stylesheet" href="design1.css">
+                </head>
+                <body>
+                    <h1>H E L L O</h1>
+                    <span class="abc">${req.session.nickname}</span>
+                    <br>
+                    <h2>How was your today?</h2>
+                    <br><br>
+                    <a href="/startchat"><input type="button" value="START CHAT" class="signupbtn"></a>
+                    <br><br>
+                    <a href="/login/logout"><input type="button" value="LOGOUT" class="loginbtn"></a>
+                    <script src="../server.js"></script>
+                    <script>
+                    </script>
+                </body>
+                </html>
+                `;
+                res.send(output);
     }
     else{
         var output = `
