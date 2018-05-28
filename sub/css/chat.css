@@ -38,7 +38,8 @@ textarea{
 }
 
 #m{
-    width: 55%;
+    position:relative;
+    width: 65%;
     height: 30px; 
     font-size: 15px;
     background-color: #AAB7B8;
