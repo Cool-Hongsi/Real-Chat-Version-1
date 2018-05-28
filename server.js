@@ -100,7 +100,7 @@ app.get('/welcome', (req, res) => {
             <body>
             <div class="container-fluid">
                 <p class="h1"><i class="fas fa-hand-peace" sytle="color: babypink"></i> Welcome
-                <small class="text-muted"><br><span>${req.session.nickname}</span></small></p>
+                <small class="text-muted"><span>${req.session.nickname}</span></small></p>
                 <p class="h2">How was your today?</p>
                 <div class="hello">
                 <p class="lead">
