@@ -20,22 +20,22 @@
   </head>
 
   <body class="text-left">
-    <form>
+    <form action="/signup/success" method="post">
         <div class="form-group"><h3><i class="fas fa-user-plus"></i> Sign Up</h3>
           <label for="inputName">Name</label>
-          <input type="text" class="form-control" id="inputName" placeholder="Full Name">
+          <input type="text" class="form-control" id="inputName" placeholder="Full Name" name="name">
         </div>
         <div class="form-group">
             <label for="inputID">User ID</label>
-            <input type="text" class="form-control" id="inputID" placeholder="Input UserID">
+            <input type="text" class="form-control" id="inputID" placeholder="Input UserID" name="id">
         </div>
         <div class="form-group">
             <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="pwd">
+            <input type="password" class="form-control" id="pwd" name="pwd">
         </div>
         <div class="form-group">
           <label for="inputNick">Nickname</label>
-          <input type="text" class="form-control" id="nickname">
+          <input type="text" class="form-control" id="nickname" name="nickname">
         </div>
         <button type="submit" class="btn btn-danger">Submit</button>
         <br>
