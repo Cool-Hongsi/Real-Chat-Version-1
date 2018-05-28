@@ -87,9 +87,9 @@ app.get('/welcome', (req, res) => {
                     <link rel="stylesheet" href="design1.css">
                 </head>
                 <body>
-                    <h1>H E L L O</h1><br>
+                    <h1>H E L L O</h1>
                     <span class="loginnickname">${req.session.nickname}</span>
-                    <br>
+                    <br><br>
                     <h2>How's your today?</h2>
                     <br><br>
                     <a href="/startchat"><input type="button" value="START CHAT" class="signupbtn"></a>
