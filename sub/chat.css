@@ -1,0 +1,47 @@
+html{
+    font-family: "Raleway", Arial, sans-serif;
+    text-align: center;
+}
+body{
+    padding: 10px;
+}
+h1{
+    margin-top: 50px;
+    color:#273746;
+    padding-top: 10px;
+}
+
+textarea{
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+#chat{
+    width: 70%; 
+    height: 500px;
+    border-style: dashed;
+    background-color: #EAECEE;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+#contentWrap{
+    display:none;
+}
+
+#nickWrap{
+    float:left;
+}
+
+#m{
+    width: 55%;
+    height: 30px; 
+    font-size: 15px;
+    background-color: #AAB7B8;
+    border: none;
+    color: black;
+}

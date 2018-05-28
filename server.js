@@ -76,28 +76,46 @@ app.post('/login/success', (req, res) => {
 app.get('/welcome', (req, res) => {
     if(req.session.nickname){
        // res.render('loginsuccess', {nickname:req.session.nickname});
-       var output = `
+       var output = `            
             <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                    <title>LOGIN SUCCESS</title>
-                    <link rel="stylesheet" href="design1.css">
-                </head>
-                <body>
-                    <h1>H E L L O</h1>
-                    <span class="loginnickname">${req.session.nickname}</span>
-                    <br><br>
-                    <h2>How's your today?</h2>
-                    <br><br>
-                    <a href="/startchat"><input type="button" value="START CHAT" class="signupbtn"></a>
-                    <br><br>
-                    <a href="/login/logout"><input type="button" value="LOGOUT" class="loginbtn"></a>
-                </body>
-                </html>
-                `;
+            <html lang="en">
+            <head>
+            <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <meta name="description" content="">
+                <meta name="author" content="">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+                <title>Login Success</title>
+
+                <!-- Bootstrap core CSS -->
+                <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+                <!-- Custom styles for this template -->
+                <link href="welcome.css" rel="stylesheet">
+            </head>
+            <body>
+            <div class="container-fluid">
+                <p class="h1"><i class="fas fa-hand-peace" sytle="color: babypink"></i> Welcome
+                <small class="text-muted"><span class="abc">&{nickname};</span></small></p>
+                <p class="h2">How was your today?</p>
+                <div class="hello">
+                <p class="lead">
+                <strong>Hello</strong>, We tried to make <mark>Real-Chat Application</mark> to utilize our knowledge we have learned<br>
+                <mark>JavaScript, Node.js, MySQL for database, HTML, CSS(Bootstrap), Heroku</mark><br>
+                Thank you, Enjoy! <br><br>
+                <em>Sungjun Hong and Yuseon Kang<small class="text-muted"><br>May, 2018</small></em>
+                </div>
+                </p>
+                <br><br>
+                </div>
+                <a href="/startchat"><button type="button" class="btn btn-secondary btn-lg" value="START CHAT">Start Chat</button></a>
+                <a href="/login/logout"><button type="button" class="btn btn-light btn-lg" value="LOGOUT">Logout</button></a>
+            </body>
+            </html>`;
                 res.send(output);
     }
     else{
