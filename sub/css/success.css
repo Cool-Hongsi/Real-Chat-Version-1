@@ -3,7 +3,6 @@ html {
   min-height: 100%;
 }
 body {
-  background-color: #f5f5f5;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -11,6 +10,7 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   padding-left: 10px;
+  background-color: #f5f5f5;
 }
 h2 {
   font-family: "Gill Sans Extrabold", Helvetica, sans-serif;
@@ -34,4 +34,9 @@ i {
 @keyframes icon {
   from {color:black;}
   to {color: red;;}
+}
+p{
+  padding: 10px;
+  background-color: #FEE19F;
+  border-radius: 15px;
 }
