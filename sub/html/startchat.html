@@ -48,8 +48,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-comment"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Message" id="m" aria-label="msg" aria-describedby="basic-addon1"></input>
-                        <button class="btn btn-secondary" type="submit" value="send"></button>
+                        <input type="text" placeholder="  Message" id="m" aria-label="msg" aria-describedby="basic-addon1"></input>
+                        <button class="btn btn-secondary" type="submit" value="send">Send</button>
                         </div>
                     </form>
                 </div>
@@ -78,7 +78,7 @@
                 socket.on('usernames', function(data){ // 채팅창 오른쪽에 USERNAME 표시
                     var output_username = '';
                         for(var i=0; i<data.length; i++){
-                            output_username += `<i class="icon-child animate-spin"></i>` + data[i] + '<br>'
+                            output_username += `<i class="icon-child animate-spin"></i>` + data[i] + `&nbsp&nbsp&nbsp`;
                         }
                     $('#users').html(output_username); // append로 하면, username이 쌓인다.
                 });
