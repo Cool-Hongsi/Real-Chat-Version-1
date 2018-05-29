@@ -47,14 +47,6 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-a {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    position: absolute;
-    margin: 170px;
-    margin-left: 555px;
-}
 a:link{
     text-decoration: none;
 }
