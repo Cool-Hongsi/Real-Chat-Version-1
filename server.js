@@ -157,11 +157,15 @@ app.post('/signup/success', (req, res) => {
 app.get('/login/logout', (req, res) => {
     delete req.session.nickname;
     
+    /*
     var output = `
     <h1>Logout Successfully !</h1><br>
     <a href="/"><input type="button" value="LOGIN"></a>
     `;
     res.send(output);
+    */
+
+    res.render('logout');
 })
 
 app.get('/startchat', (req, res) => { 
