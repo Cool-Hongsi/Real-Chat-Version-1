@@ -52,7 +52,7 @@ app.post('/login/success', (req, res) => {
         }
         else{
             delete req.session.nickname;
-            
+
             for(var i=0; i<rows.length; i++){
                 // if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
                 //     req.session.nickname = rows[i].NICKNAME;
@@ -216,4 +216,4 @@ server.listen(port, () => { // never app.listen
 // PS C:\Users\hongs\dev\js\server_side_javascript\RealChat> heroku git:remote -a fast-spire-12846 (new app name)
 // fatal: 'heroku' does not appear to be a git repository
 
-//aaaaaaaaaaaaaa
+//aaaaaaaaaaaaaaA
