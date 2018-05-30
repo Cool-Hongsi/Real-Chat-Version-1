@@ -143,16 +143,33 @@ app.post('/signup/success', (req, res) => {
     var pwd = req.body.pwd;
     var nickname = req.body.nickname;
     
-    var sql = 'INSERT INTO USER (NAME, ID, PWD, NICKNAME) VALUES (?, ?, ?, ?)';
-    var params = [name, id, sha256(pwd+salt), nickname];
-    
-    conn.query(sql, params, function(err, rows, fields){
+    var Selectsql = 'SELECT *FROM USER';
+    conn.query(Selectsql, function(err, rows, fields){
         if(err){
             throw err;
             res.status(500).send('Error Occured in /signup/success');
         }
         else{
-            res.render('signupsuccess');
+            for(var i=0; i<rows.length; i++){
+                if(id === rows[i].ID){
+                    res.render('existID');
+                    break;
+                }
+            }
+            if(i == rows.length-1){
+                var Insertsql = 'INSERT INTO USER (NAME, ID, PWD, NICKNAME) VALUES (?, ?, ?, ?)';
+                var params = [name, id, sha256(pwd+salt), nickname];
+                
+                conn.query(Insertsql, params, function(err, rows, fields){
+                    if(err){
+                        throw err;
+                        res.status(500).send('Error Occured in /signup/success');
+                    }
+                    else{
+                        res.render('signupsuccess');
+                    }
+                })
+            }
         }
     })
 })
@@ -216,4 +233,4 @@ server.listen(port, () => { // never app.listen
 // PS C:\Users\hongs\dev\js\server_side_javascript\RealChat> heroku git:remote -a fast-spire-12846 (new app name)
 // fatal: 'heroku' does not appear to be a git repository
 
-//aaaaaaaaaaaaaaA
+//aaaaaaaaaaaaaa
