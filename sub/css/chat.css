@@ -22,11 +22,13 @@ textarea{
 }
 
 #chat{
-    width: 70%; 
+    width: 80%; 
     height: 500px;
     border-style: dashed;
     background-color: #EAECEE;
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-family: Convergence;
+    font-size: 15px;
+    font-weight: 400;
 }
 
 #contentWrap{
@@ -53,4 +55,31 @@ textarea{
 
 #nickname{
     height:37px;
+}
+.chat{
+    margin-right: 300px;
+    width: 700px;
+    float: left;
+}
+.users{
+    padding-top: 10px;
+    width: 300px;
+    height: 400px;
+    float: left;
+    margin-left: 600px;
+    position: absolute;
+    padding-left: 30px;
+    font-family: 'Poppins', sans-serif;
+    background-color:#5D6D7E;
+    color: white;
+    border-radius: 15px;
+}
+.container{
+    width: 100%;
+    max-height: 900px;
+    display: center;
+}
+.users #users{
+    padding-top: 10px;
+    color: #EBF5FB;
 }

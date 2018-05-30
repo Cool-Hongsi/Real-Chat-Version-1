@@ -51,6 +51,8 @@ app.post('/login/success', (req, res) => {
             res.status(500).send('Error Occured in /login/success');
         }
         else{
+            delete req.session.nickname;
+            
             for(var i=0; i<rows.length; i++){
                 // if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
                 //     req.session.nickname = rows[i].NICKNAME;
@@ -58,27 +60,17 @@ app.post('/login/success', (req, res) => {
                 // }
                 // else if(id === rows[i].ID || sha256(pwd+salt) === rows[i].PWD){
                 //     res.redirect('/welcome');
-                if (id === rows[i].ID)
-                {
-                    // for(var j=0; j<rows.length; j++)
-                    // {
-                        if(sha256(pwd+salt) === rows[i].PWD){
-                            req.session.nickname = rows[i].NICKNAME;
-                            res.redirect('/welcome');
-                            break;
-                        }
-                        
-                        else if(sha256(pwd+salt) !== rows[i].PWD){
- 
-                            res.redirect('/welcome');
-                            break;
-                            
-
-                            
-                        
-                        }
+                if(id === rows[i].ID){
+                    if(sha256(pwd+salt) === rows[i].PWD){
+                        req.session.nickname = rows[i].NICKNAME;
+                        res.redirect('/welcome');
+                        break;
                     }
-                
+                    else if(sha256(pwd+salt) !== rows[i].PWD){
+                        res.redirect('/welcome');
+                        break;
+                    }
+                }
                 else if(id !== rows[i].ID){
                     if(i == rows.length-1){
                           res.redirect('/welcome');

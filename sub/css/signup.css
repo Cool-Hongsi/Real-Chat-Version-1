@@ -25,3 +25,7 @@ button {
   max-width: 100px;
   margin-top:10px;
 }
+.ErrorName, .ErrorID, .ErrorPassword, .ErrorPasswordAgain, .ErrorNickname{
+  color:red;
+  font-weight: bold;
+}
