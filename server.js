@@ -156,7 +156,7 @@ app.post('/signup/success', (req, res) => {
                     break;
                 }
             }
-            if(i == rows.length-1){ // 같은 ID가 없다.
+            if(i == rows.length){ // 같은 ID가 없다. (for 문 밖이라서 rows.length..)
                 var Insertsql = 'INSERT INTO USER (NAME, ID, PWD, NICKNAME) VALUES (?, ?, ?, ?)';
                 var params = [name, id, sha256(pwd+salt), nickname];
                 
