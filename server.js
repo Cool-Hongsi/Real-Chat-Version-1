@@ -51,7 +51,7 @@ app.post('/login/success', (req, res) => {
             res.status(500).send('Error Occured in /login/success');
         }
         else{
-            delete req.session.nickname;
+            delete req.session.nickname; // initialize!! necessary!!
 
             for(var i=0; i<rows.length; i++){
                 // if(id === rows[i].ID && sha256(pwd+salt) === rows[i].PWD){
@@ -156,7 +156,7 @@ app.post('/signup/success', (req, res) => {
                     break;
                 }
             }
-            if(i == rows.length-1){
+            if(i == rows.length-1){ // 같은 ID가 없다.
                 var Insertsql = 'INSERT INTO USER (NAME, ID, PWD, NICKNAME) VALUES (?, ?, ?, ?)';
                 var params = [name, id, sha256(pwd+salt), nickname];
                 
