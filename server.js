@@ -60,12 +60,28 @@ app.post('/login/success', (req, res) => {
                 //     res.redirect('/welcome');
                 if (id === rows[i].ID)
                 {
-                    for(var j=0; j<rows.length; j++){
-                        if(sha256(pwd+salt) === rows[j].PWD){
-                        req.session.nickname = rows[j].NICKNAME;
-                        res.redirect('/welcome');
-                        break;
+                    // for(var j=0; j<rows.length; j++)
+                    // {
+                        if(sha256(pwd+salt) === rows[i].PWD){
+                            req.session.nickname = rows[i].NICKNAME;
+                            res.redirect('/welcome');
+                            break;
+                        }
+                        
+                        else if(sha256(pwd+salt) !== rows[i].PWD){
+ 
+                            res.redirect('/welcome');
+                            break;
+                            
+
+                            
+                        
+                        }
                     }
+                
+                else if(id !== rows[i].ID){
+                    if(i == rows.length-1){
+                          res.redirect('/welcome');
                     }
                 }
             }
@@ -119,12 +135,7 @@ app.get('/welcome', (req, res) => {
                 res.send(output);
     }
     else{
-        var output = `
-        <h1>There is no matching USER</h1>
-        <br>
-        <a href="/"><input type="button" value="BACK"></a>
-        `;
-        res.send(output);
+        res.render('nomatch');
     }
 })
 
@@ -157,11 +168,15 @@ app.post('/signup/success', (req, res) => {
 app.get('/login/logout', (req, res) => {
     delete req.session.nickname;
     
+    /*
     var output = `
     <h1>Logout Successfully !</h1><br>
     <a href="/"><input type="button" value="LOGIN"></a>
     `;
     res.send(output);
+    */
+
+    res.render('logout');
 })
 
 app.get('/startchat', (req, res) => { 
