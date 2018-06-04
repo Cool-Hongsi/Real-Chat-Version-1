@@ -12,7 +12,6 @@ var fs = require('fs');
 var ejs = require('ejs');
 // var modulefile = require('./module.js');
 
-// clearmysql을 내 heroku app에 설정하고, 해당 정보를 하기와 같이 기재. 이후, mysql connector를 이용해서 테이블 수정
 var conn = mysql.createConnection({
     host : 'us-cdbr-iron-east-04.cleardb.net',
     user : 'bb7619d1a2d2a9',
@@ -37,8 +36,6 @@ app.engine('html', ejs.renderFile);
 app.get('/', (req, res) => {
     res.render('login');
 })
-
-// 필수 : DB 안에 ID가 같은게 있거나, PWD가 같은게 있으면 에러 발생
 
 app.post('/login/success', (req, res) => {
     var id = req.body.id;
@@ -135,8 +132,6 @@ app.get('/signup', (req, res) => {
     res.render('signup');
 })
 
-// 필수 : DB 안에 ID가 같은게 있거나, PWD가 같은게 있으면 에러 발생
-
 app.post('/signup/success', (req, res) => {
     var name = req.body.name;
     var id = req.body.id;
@@ -156,7 +151,7 @@ app.post('/signup/success', (req, res) => {
                     break;
                 }
             }
-            if(i == rows.length){ // 같은 ID가 없다. (for 문 밖이라서 rows.length..)
+            if(i == rows.length){
                 var Insertsql = 'INSERT INTO USER (NAME, ID, PWD, NICKNAME) VALUES (?, ?, ?, ?)';
                 var params = [name, id, sha256(pwd+salt), nickname];
                 
@@ -189,17 +184,17 @@ app.get('/login/logout', (req, res) => {
 })
 
 app.get('/startchat', (req, res) => { 
-    res.sendFile(__dirname + '/sub/html/startchat.html'); // ./sub 하면 안됨
+    res.sendFile(__dirname + '/sub/html/startchat.html');
 });
 
 var nicknames = [];
 
 io.on('connection', function(socket){
     socket.on('new user', function(data, callback){
-      if(nicknames.indexOf(data) != -1){ // nicknames 배열에 data 값이 있다면,,
+      if(nicknames.indexOf(data) != -1){
         callback(false);
       }
-      else{ // nicknames 배열에 data 값이 없다면,,
+      else{
         callback(true);
         socket.nickname = data;
         nicknames.push(socket.nickname);
@@ -217,14 +212,14 @@ io.on('connection', function(socket){
     
     socket.on('disconnect', function(data){
       if(!socket.nickname) return;
-      nicknames.splice(nicknames.indexOf(socket.nickname), 1); // nickname 배열에서 유저가 나갔을 때, 해당 nickname 1개를 빼라.
+      nicknames.splice(nicknames.indexOf(socket.nickname), 1);
       updateNicknames();
     })
 });
 
 // conn.end();
 
-server.listen(port, () => { // never app.listen
+server.listen(port, () => {
     console.log(`Express http server listening on ${port}`);
 });
 
@@ -232,5 +227,3 @@ server.listen(port, () => { // never app.listen
 // PS C:\Users\hongs\dev\js\server_side_javascript\RealChat> git remote rm heroku
 // PS C:\Users\hongs\dev\js\server_side_javascript\RealChat> heroku git:remote -a fast-spire-12846 (new app name)
 // fatal: 'heroku' does not appear to be a git repository
-
-//aaaaaaaaaaaaaaaaaaaaaaaa
